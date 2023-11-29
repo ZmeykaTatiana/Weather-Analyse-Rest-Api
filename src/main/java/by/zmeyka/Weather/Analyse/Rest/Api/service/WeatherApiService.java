@@ -14,10 +14,6 @@ public class WeatherApiService {
     @Autowired
     private RestTemplate restTemplate;
 
-
-
-
-
     public CurrentWeatherDTO getWeatherByMinsk() {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
