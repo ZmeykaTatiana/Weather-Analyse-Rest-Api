@@ -1,4 +1,4 @@
-package by.zmeyka.Weather.Analyse.Rest.Api.service;
+package by.zmeyka.Weather.Analyse.Rest.Api.util;
 
 import by.zmeyka.Weather.Analyse.Rest.Api.DTO.CurrentWeatherDTO;
 import by.zmeyka.Weather.Analyse.Rest.Api.model.WeatherData;
@@ -22,7 +22,7 @@ public class Convert {
         weatherData.setLocation(currentWeatherDTO.getLocation().getName());
         String date=currentWeatherDTO.getLocation().getLocaltime();
         Date currentDate=convertToDate(date);
-        weatherData.setCreated_at(currentDate);
+        weatherData.setCreatedAt(currentDate);
         return weatherData;
     }
 
@@ -32,6 +32,20 @@ public class Convert {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
              date = dateFormat.parse(dateString);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+
+        }
+        return date;
+
+    }
+    public static Date convertToAnotherFormat(String dateString){
+        String pattern = "dd-MM-yyyy";
+        Date date=null;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+            date = dateFormat.parse(dateString);
 
         } catch (ParseException e) {
             e.printStackTrace();

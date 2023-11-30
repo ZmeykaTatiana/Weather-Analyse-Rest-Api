@@ -37,7 +37,7 @@ public class WeatherData {
     private String location;
 
     @Column(name="created_at")
-    private Date created_at;
+    private Date createdAt;
 
 
 }

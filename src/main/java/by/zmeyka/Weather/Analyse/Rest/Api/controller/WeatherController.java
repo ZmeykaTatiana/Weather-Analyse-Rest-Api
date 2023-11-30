@@ -1,16 +1,16 @@
 package by.zmeyka.Weather.Analyse.Rest.Api.controller;
 
 import by.zmeyka.Weather.Analyse.Rest.Api.DTO.CurrentWeatherDTO;
+import by.zmeyka.Weather.Analyse.Rest.Api.DTO.WeatherAvgDTO;
+import by.zmeyka.Weather.Analyse.Rest.Api.DTO.WeatherAvgResponse;
 import by.zmeyka.Weather.Analyse.Rest.Api.model.WeatherData;
 import by.zmeyka.Weather.Analyse.Rest.Api.repository.WeatherDataRepository;
-import by.zmeyka.Weather.Analyse.Rest.Api.service.Convert;
+import by.zmeyka.Weather.Analyse.Rest.Api.util.Convert;
 import by.zmeyka.Weather.Analyse.Rest.Api.service.WeatherApiService;
 import by.zmeyka.Weather.Analyse.Rest.Api.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/weather")
@@ -49,6 +49,14 @@ public class WeatherController {
             return result.toString();
 
 
+    }
+    @PostMapping("/avg")
+    public @ResponseBody WeatherAvgResponse getAvgTemperature(@RequestBody WeatherAvgDTO weatherAvgDTO){
+        int result= weatherService.calculateAvgTemperature(weatherAvgDTO.getFrom(),weatherAvgDTO.getTo());
+        WeatherAvgResponse response=new WeatherAvgResponse();
+        response.setAverage_temp(result);
+
+        return response;
     }
 
 
