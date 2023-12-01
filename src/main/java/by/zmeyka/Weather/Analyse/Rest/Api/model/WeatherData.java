@@ -19,16 +19,16 @@ public class WeatherData {
     private int id;
 
     @Column(name="temperature")
-    private double temperature;
+    private int temperature;
 
     @Column(name="wind_speed")
-    private double wind_speed;
+    private int wind_speed;
 
     @Column(name="atmospheric_pressure")
-    private double atmospheric_pressure;
+    private int atmospheric_pressure;
 
     @Column(name="humidity")
-    private double humidity;
+    private int humidity;
 
     @Column(name="weather_conditions")
     private String weatherCondition;
@@ -40,4 +40,7 @@ public class WeatherData {
     private Date createdAt;
 
 
+    public WeatherData(int id) {
+        this.id = id;
+    }
 }

@@ -6,9 +6,7 @@ import by.zmeyka.Weather.Analyse.Rest.Api.util.Convert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class WeatherService {
@@ -25,8 +23,15 @@ public class WeatherService {
             idLast++;
             iterator.next();
         }
-        WeatherData weatherData=weatherDataRepository.findById(idLast).get();
-        return weatherData;
+        Optional<WeatherData> weatherData=null;
+
+        try{
+         weatherData =weatherDataRepository.findById(idLast);
+       }
+       catch (NoSuchElementException e){
+           e.getMessage();
+       }
+        return weatherData.get();
 
     }
 
@@ -36,6 +41,7 @@ public class WeatherService {
 
 
         List<WeatherData> weatherDataList=weatherDataRepository.findByCreatedAtBetween(from1,to1);
+
         int avgTemperature =(int) weatherDataList.stream()
                 .mapToDouble(WeatherData::getTemperature)
                 .average().getAsDouble();

@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CurrentWeatherDTO {
@@ -30,13 +32,13 @@ public class CurrentWeatherDTO {
     @Data
     public static class Current {
         @JsonProperty("temp_c")
-        private double temperature;
+        private int temperature;
 
         @JsonProperty("wind_mph")
-        private double windMph;
+        private int windMph;
 
         @JsonProperty("pressure_mb")
-        private double pressureMb;
+        private int pressureMb;
 
         @JsonProperty("humidity")
         private int humidity;
