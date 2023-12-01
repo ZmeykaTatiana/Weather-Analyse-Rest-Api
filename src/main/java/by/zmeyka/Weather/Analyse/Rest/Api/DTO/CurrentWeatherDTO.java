@@ -19,6 +19,7 @@ public class CurrentWeatherDTO {
     private Current current;
 
     @Data
+    @AllArgsConstructor
     public static class Location {
         @JsonProperty("name")
         private String name;
@@ -30,6 +31,7 @@ public class CurrentWeatherDTO {
 
 
     @Data
+    @AllArgsConstructor
     public static class Current {
         @JsonProperty("temp_c")
         private int temperature;
@@ -45,6 +47,7 @@ public class CurrentWeatherDTO {
         @JsonProperty("condition")
         private Condition weatherCondition;
         @Data
+        @AllArgsConstructor
         public static class Condition{
             @JsonProperty("text")
             private String text;

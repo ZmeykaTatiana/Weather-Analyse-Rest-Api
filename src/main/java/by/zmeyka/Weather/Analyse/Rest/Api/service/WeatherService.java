@@ -43,8 +43,8 @@ public class WeatherService {
         List<WeatherData> weatherDataList=weatherDataRepository.findByCreatedAtBetween(from1,to1);
 
         int avgTemperature =(int) weatherDataList.stream()
-                .mapToDouble(WeatherData::getTemperature)
-                .average().getAsDouble();
+                .mapToInt(WeatherData::getTemperature)
+                .average().orElse(0);
 
        return avgTemperature;
 
