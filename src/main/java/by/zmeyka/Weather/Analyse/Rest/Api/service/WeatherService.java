@@ -17,21 +17,10 @@ public class WeatherService {
 
     public WeatherData getCurrentActualInfo(){
         List<WeatherData> list=weatherDataRepository.findAll();
-        Iterator<WeatherData> iterator=list.iterator();
-        int idLast=0;
-        while(iterator.hasNext()){
-            idLast++;
-            iterator.next();
-        }
-        Optional<WeatherData> weatherData=null;
+        list.sort(Comparator.comparingInt(WeatherData::getId).reversed());
+        WeatherData lastWeatherData = list.get(0);
 
-        try{
-         weatherData =weatherDataRepository.findById(idLast);
-       }
-       catch (NoSuchElementException e){
-           e.getMessage();
-       }
-        return weatherData.get();
+        return lastWeatherData;
 
     }
 

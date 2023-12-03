@@ -46,24 +46,26 @@ public class WeatherController {
 
     @GetMapping("/currentInfo")
     public String getCurrentWeather() {
-        try {
-            WeatherData weatherData = weatherService.getCurrentActualInfo();
-            StringBuilder result = new StringBuilder();
+        WeatherData weatherData=null;
+     try  {
+            weatherData= weatherService.getCurrentActualInfo();
 
-            result.
-                    append("1) Температура ").append(weatherData.getTemperature()).append("<br>")
-                    .append("2) Скорость ветра в м/ч ").append(weatherData.getWind_speed()).append("<br>")
-                    .append(" 3) Атмосферное давление в  миллибарах ").append(weatherData.getAtmospheric_pressure()).append("<br>")
-                    .append(" 4) Влажность воздуха ").append(weatherData.getHumidity()).append("<br>")
-                    .append("5) Погодные условия  ").append(weatherData.getWeatherCondition()).append("<br>")
-                    .append("6) Локация ").append(weatherData.getLocation());
-
-            return result.toString();
 
         } catch (Exception e){
             throw new WeatherDataGetException("can't get Weather data ");
 
         }
+        StringBuilder result = new StringBuilder();
+
+        result.
+                append("1) Температура ").append(weatherData.getTemperature()).append("<br>")
+                .append("2) Скорость ветра в м/ч ").append(weatherData.getWind_speed()).append("<br>")
+                .append(" 3) Атмосферное давление в  миллибарах ").append(weatherData.getAtmospheric_pressure()).append("<br>")
+                .append(" 4) Влажность воздуха ").append(weatherData.getHumidity()).append("<br>")
+                .append("5) Погодные условия  ").append(weatherData.getWeatherCondition()).append("<br>")
+                .append("6) Локация ").append(weatherData.getLocation());
+
+        return result.toString();
 
     }
     @PostMapping("/avg")
