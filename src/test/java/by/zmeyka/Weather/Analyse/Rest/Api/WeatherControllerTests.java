@@ -39,7 +39,8 @@ public class WeatherControllerTests {
     public void testGetWeather() {
         CurrentWeatherDTO mockWeatherDTO = new CurrentWeatherDTO();
         CurrentWeatherDTO.Location location=new CurrentWeatherDTO.Location("Minsk","01-12-2023");
-        CurrentWeatherDTO.Current.Condition condition=new CurrentWeatherDTO.Current.Condition("cloudy");
+        CurrentWeatherDTO.Current.Condition condition=new CurrentWeatherDTO.Current.Condition();
+        condition.setText("cloudy");
         CurrentWeatherDTO.Current current=new CurrentWeatherDTO.Current(15,150,1005,18,condition);
 
         mockWeatherDTO.setLocation(location);

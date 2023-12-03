@@ -1,6 +1,7 @@
-package by.zmeyka.Weather.Analyse.Rest.Api.service;
+package by.zmeyka.Weather.Analyse.Rest.Api;
 
 import by.zmeyka.Weather.Analyse.Rest.Api.DTO.CurrentWeatherDTO;
+import by.zmeyka.Weather.Analyse.Rest.Api.service.WeatherApiService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -3,7 +3,6 @@ package by.zmeyka.Weather.Analyse.Rest.Api.controller;
 import by.zmeyka.Weather.Analyse.Rest.Api.DTO.CurrentWeatherDTO;
 import by.zmeyka.Weather.Analyse.Rest.Api.DTO.WeatherAvgDTO;
 import by.zmeyka.Weather.Analyse.Rest.Api.DTO.WeatherAvgResponse;
-import by.zmeyka.Weather.Analyse.Rest.Api.aspect.LoggingAspect;
 import by.zmeyka.Weather.Analyse.Rest.Api.exception_handling.IncorrectDataFormat;
 import by.zmeyka.Weather.Analyse.Rest.Api.exception_handling.WeatherDataGetException;
 import by.zmeyka.Weather.Analyse.Rest.Api.exception_handling.WeatherRequestProcessingException;
@@ -32,7 +31,7 @@ public class WeatherController {
     @Autowired
     public WeatherDataRepository dataRepository;
 
-    public LoggingAspect loggingAspect;
+
 
 
     @GetMapping("/minsk")

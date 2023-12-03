@@ -5,6 +5,8 @@ import by.zmeyka.Weather.Analyse.Rest.Api.model.WeatherData;
 import by.zmeyka.Weather.Analyse.Rest.Api.util.Convert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.ParseException;
@@ -12,9 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class ConvertTest {
 
@@ -24,7 +25,8 @@ public class ConvertTest {
 
         CurrentWeatherDTO currentWeatherDTO = new CurrentWeatherDTO();
         CurrentWeatherDTO.Location location=new CurrentWeatherDTO.Location("Minsk","2023-12-01");
-        CurrentWeatherDTO.Current.Condition condition=new CurrentWeatherDTO.Current.Condition("cloudy");
+        CurrentWeatherDTO.Current.Condition condition=new CurrentWeatherDTO.Current.Condition();
+        condition.setText("cloudy");
         CurrentWeatherDTO.Current current=new CurrentWeatherDTO.Current(15,150,1005,18,condition);
 
         currentWeatherDTO.setLocation(location);

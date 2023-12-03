@@ -24,6 +24,7 @@ public class WeatherApiService {
             httpHeaders.add("X-RapidAPI-Key", "3c17e614d8msha8eb635f42a3510p13ddb1jsn189745864483");
             httpHeaders.add("X-RapidAPI-Host", "weatherapi-com.p.rapidapi.com");
 
+
             HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
 
 
@@ -35,7 +36,7 @@ public class WeatherApiService {
             );
             return responseEntity.getBody();
 
-        } catch (Exception e) {
+       } catch (Exception e) {
             throw new WeatherApiException("Error fetching weather data from external API");
         }
     }
